@@ -6,16 +6,11 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class ArticleParser extends DefaultHandler {
 	
+	// This boolean flag will turn true when the "id" tag is found.
 	boolean idFlag = false;
 	
+	// This variable will hold the ID as a string if found.
 	String id = null;
-	
-	public ArticleParser() {
-		super();
-	}
-	
-	public void endDocument() {
-	}
 	
 	public void startElement(String uri, String name, String qName, Attributes atts) {
 		if(qName.equalsIgnoreCase("Id")) {
@@ -24,7 +19,6 @@ public class ArticleParser extends DefaultHandler {
 	}
 	
 	public void characters(char ch[], int start, int length) {		
-		
 		if (idFlag) {
 			this.id = new String(ch, start, length);			
 			idFlag = false;
