@@ -22,7 +22,7 @@ public class ArticleParser extends DefaultHandler {
 			idFlag = true;
 		}
 	}
-	
+	 
 	public void characters(char ch[], int start, int length) {		
 		
 		if (idFlag) {
