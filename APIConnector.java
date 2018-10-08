@@ -27,6 +27,8 @@ public class APIConnector {
 	}
 	
 	public void getXML() {
+		System.out.println("Begin to get XML from server...");
+		
 		
 		// Loop through ArrayList containing URLs.
 		for (String title : articlesMap.keySet()) {
