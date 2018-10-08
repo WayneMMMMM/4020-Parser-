@@ -16,9 +16,11 @@ public class DatasetPaser {
 	ArrayList<String> ResultUrl = new ArrayList<>();
 		
 	Map<String, String> articles = new HashMap<>();
-	 
-	public DatasetPaser(File f,int start, int end){
-		System.out.println("Begin to Parse dataset...");
+	NodeList TitleList;
+	
+	
+	public DatasetPaser(File f){
+		
 		
 		File inputFile= f;
 		
@@ -28,19 +30,11 @@ public class DatasetPaser {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(inputFile);
 		doc.getDocumentElement().normalize();
-		NodeList TitleList = doc.getElementsByTagName("ArticleTitle");
+		TitleList = doc.getElementsByTagName("ArticleTitle");
 		
 		
 		
-		//Loop through all titles
-		for (int i=start ; i<end;i++) {
-			
-			String title = TitleList.item(i).getTextContent();
-			String url = CreateUrl(TitleList.item(i).getTextContent());
-			
-			// This maps the article title to its corresponding URL.
-			articles.put(title, url);
-		}
+		
 
 		} catch (Exception e){
 			e.printStackTrace();
@@ -59,9 +53,27 @@ public class DatasetPaser {
 		return ResultUrl;
 	}
 	
-	//return article title and its corresponding URL as map
-	public Map getArticlesMap() {
-		return this.articles;
+	//return article title and its corresponding URL as map 
+	public Map getArticlesMap(int start, int end) {
+		System.out.println("Begin to Parse dataset...");
+		for (int i=start ; i<end;i++) {
+			
+			String title = TitleList.item(i).getTextContent();
+			String url = CreateUrl(TitleList.item(i).getTextContent());
+			
+			// This maps the article title to its corresponding URL.
+			articles.put(title, url);
+		}
+		return articles;
+	}
+	
+	
+	
+	
+	
+	//return the length of TitleList
+	public int getListLength(){
+		return TitleList.getLength();
 	}
 	
 
