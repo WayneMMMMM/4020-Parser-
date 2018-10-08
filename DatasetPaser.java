@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,8 @@ public class DatasetPaser {
 	Map<String, String> articles = new HashMap<>();
 	 
 	public DatasetPaser(File f){
+		System.out.println("Begin to Parse dataset...");
+		
 		File inputFile= f;
 		
 		try {
@@ -28,7 +31,7 @@ public class DatasetPaser {
 		NodeList TitleList = doc.getElementsByTagName("ArticleTitle");
 		
 		//Loop through all titles
-		for (int i=0 ; i<10;i++) {
+		for (int i=0 ; i<TitleList.getLength();i++) {
 			
 			String title = TitleList.item(i).getTextContent();
 			String url = CreateUrl(TitleList.item(i).getTextContent());
