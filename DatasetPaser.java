@@ -17,7 +17,7 @@ public class DatasetPaser {
 		
 	Map<String, String> articles = new HashMap<>();
 	 
-	public DatasetPaser(File f){
+	public DatasetPaser(File f,int start, int end){
 		System.out.println("Begin to Parse dataset...");
 		
 		File inputFile= f;
@@ -30,8 +30,10 @@ public class DatasetPaser {
 		doc.getDocumentElement().normalize();
 		NodeList TitleList = doc.getElementsByTagName("ArticleTitle");
 		
+		
+		
 		//Loop through all titles
-		for (int i=0 ; i<TitleList.getLength();i++) {
+		for (int i=start ; i<end;i++) {
 			
 			String title = TitleList.item(i).getTextContent();
 			String url = CreateUrl(TitleList.item(i).getTextContent());
@@ -61,7 +63,8 @@ public class DatasetPaser {
 	public Map getArticlesMap() {
 		return this.articles;
 	}
-	 
+	
+
 	
 	
 	
