@@ -7,7 +7,7 @@ public class Parser {
 	public static void main(String[] args) {
 		
 	File input = new File ("4020a1-datasets.txt");
-	DatasetPaser myPaser= new DatasetPaser(input);
+	DatasetParser myPaser= new DatasetParser(input);
 	
 
 	
