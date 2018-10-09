@@ -22,6 +22,10 @@ public class APIConnector {
 	// We will be storing the Titles to ID map in this data structure.
 	private Map<String, String> IdMap = new HashMap<>();
 	
+	//progress feedback indicator
+	int current = 0;
+	
+
 	public APIConnector(Map<String, String> articlesMap) {
 		this.articlesMap = articlesMap;
 	}
@@ -32,13 +36,17 @@ public class APIConnector {
 		
 		// Loop through ArrayList containing URLs.
 		for (String title : articlesMap.keySet()) {
+			// show progress on console 
+			System.out.print(current + "/5299\r");
 			
-			// Gets the URL string from our HashMap data structure.
+			current++;
+			 
+			// Gets the URL string from our HashMap data structure. 
 			String url = articlesMap.get(title);
 			
 			try {
 				// Create a new URL object with the URL string, and start a connection.
-				URL obj = new URL(url);
+				URL obj = new URL(url); 
 				InputStream in = obj.openStream();
 				
 				// XMLReader instantiation according to SAX documentation.
@@ -64,7 +72,7 @@ public class APIConnector {
 				System.out.println("Error at URL");
 				e.printStackTrace();
 			} catch (IOException e) {
-				System.out.println("Error at connecting to Server");
+				System.out.println("Error at connecting to Server with url " + url);
 				e.printStackTrace();
 			} catch (SAXException e) {
 				System.out.println("Error at parsing XML");
