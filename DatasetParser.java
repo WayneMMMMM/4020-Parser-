@@ -11,13 +11,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 //This class parses the dataset and generate urls.
-public class DatasetPaser {
+public class DatasetParser {
 	
 	ArrayList<String> ResultUrl = new ArrayList<>();
 		
 	Map<String, String> articles = new HashMap<>();
 	 
-	public DatasetPaser(File f){
+	public DatasetParser(File f){
 		System.out.println("Begin to Parse dataset...");
 		
 		File inputFile= f;
