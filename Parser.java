@@ -19,7 +19,7 @@ public class Parser {
 	
 
 	
-	XMLWriter myWriter = new XMLWriter("/Users/Wayne/test.txt", results);
+	XMLWriter myWriter = new XMLWriter("./groupID_result.xml", results);
 	myWriter.writeFile();
 	
 	
